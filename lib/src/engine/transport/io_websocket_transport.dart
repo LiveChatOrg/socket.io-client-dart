@@ -91,7 +91,7 @@ class IOWebSocketTransport extends Transport {
     // no need for encodePayload
     packets.forEach((packet) {
       PacketParser.encodePacket(packet,
-          supportsBinary: supportsBinary, fromClient: true, callback: (data) {
+          supportsBinary: supportsBinary, fromClient: false, callback: (data) {
         // Sometimes the websocket has already been closed but the browser didn't
         // have a chance of informing us about it yet, in that case send will
         // throw an error
