@@ -81,8 +81,15 @@ class Manager extends EventEmitter {
     lastPing = null;
     encoding = false;
     packetBuffer = [];
-    encoder = Encoder();
-    decoder = Decoder();
+    // custom parser
+    var _parser = options['parser'];
+    if (_parser == null) {
+      encoder = Encoder();
+      decoder = Decoder();
+    } else {
+      encoder = _parser['encoder'];
+      decoder = _parser['decoder'];
+    }
     autoConnect = options['autoConnect'] != false;
     if (autoConnect) open();
   }
